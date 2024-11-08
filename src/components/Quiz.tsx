@@ -9,13 +9,27 @@ const Quiz: React.FC = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string>();
 
   const handleOptionSelect = (option: string): void => {
-    setSelectedAnswer(option);
+    if (selectedAnswer === option) {
+      // unselect selected options
+      setSelectedAnswer(undefined);
+    } else {
+      setSelectedAnswer(option);
+    }
   }
 
 
   const handleButtonClick = (): void => {
     // TODO: Task3 - Implement the logic for button click ("Next Question" and "Submit").
     // Hint: You might want to check for a function in the core logic to help with this.
+    if (selectedAnswer === undefined) {
+      // TODO:
+    } else {
+      quizCoreRef.current.answerQuestion(selectedAnswer);
+      quizCoreRef.current.nextQuestion();
+
+      // unselect selected options
+      setSelectedAnswer(undefined);
+    }
   }
 
   const currentQuestion = quizCoreRef.current.getCurrentQuestion();
@@ -56,7 +70,12 @@ const Quiz: React.FC = () => {
       <h3>Selected Answer:</h3>
       <p>{selectedAnswer ?? 'No answer selected'}</p>
 
-      <button onClick={handleButtonClick}>Next Question</button>
+      {
+        quizCoreRef.current.hasNextQuestion() ?
+          <button onClick={handleButtonClick}>Next Question</button> :
+          <button onClick={handleButtonClick}>Submit</button>
+      }
+
     </div>
   );
 };
