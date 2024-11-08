@@ -1,8 +1,6 @@
 import React, { useState, useRef } from 'react'
-import './Quiz.css'
-import QuizQuestion from '../core/QuizQuestion';
 import QuizCore from '../core/QuizCore';
-// Hint: Take advantage of the QuizQuestion interface
+import './Quiz.css'
 
 const Quiz: React.FC = () => {
   // TODO: Task1 - Seprate the logic of quiz from the UI.
@@ -26,17 +24,21 @@ const Quiz: React.FC = () => {
 
   if (!currentQuestion) {
     return (
-      <div>
+      <div className='quiz-completed'>
         <h2>Quiz Completed</h2>
-        <p>Final Score: {score} out of {questionLength}</p>
+        <p className='score'>Final Score: {score} out of {questionLength}</p>
       </div>
     );
   }
 
   return (
-    <div>
+    <div className='quiz-container'>
+      <div className='quiz-header'>
+        <h1>My React Quiz</h1>
+      </div>
+
       <h2>Quiz Question:</h2>
-      <p>{currentQuestion.question}</p>
+      <p className='question'>{currentQuestion.question}</p>
 
       <h3>Answer Options:</h3>
       <ul>
