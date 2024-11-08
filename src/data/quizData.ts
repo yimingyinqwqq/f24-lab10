@@ -2,6 +2,11 @@ import QuizQuestion from "../core/QuizQuestion";
 
 const quizData: QuizQuestion[] = [
   {
+    question: 'What is the capital of France?',
+    options: ['London', 'Berlin', 'Paris', 'Madrid'],
+    correctAnswer: 'Paris',
+  },
+  {
     question: "What describes a group of objects that are treated the same way as a single instance of the same type of object?",
     options: ["Composite", "Strategy", "Facade", "Decorator"],
     correctAnswer: "Composite",
