@@ -6,7 +6,7 @@ const Quiz: React.FC = () => {
   // TODO: Task1 - Seprate the logic of quiz from the UI.
   // Hint: Take advantage of QuizCore to manage quiz state separately from the UI.
   const quizCoreRef = useRef<QuizCore>(new QuizCore());
-  const [selectedAnswer, setSelectedAnswer] = useState<string>();
+  const [selectedAnswer, setSelectedAnswer] = useState<string>(); 
 
   const handleOptionSelect = (option: string): void => {
     if (selectedAnswer === option) {
@@ -25,10 +25,11 @@ const Quiz: React.FC = () => {
       // TODO:
     } else {
       quizCoreRef.current.answerQuestion(selectedAnswer);
-      quizCoreRef.current.nextQuestion();
 
       // unselect selected options
       setSelectedAnswer(undefined);
+
+      quizCoreRef.current.nextQuestion();
     }
   }
 
